@@ -1,0 +1,49 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.wrap{
+	width: 800px;	
+	margin: 0 auto;
+	border: 1px solid red;	
+	font-family: "微软雅黑",arial;	
+	font-size: 15px;	
+}
+.wrap .left{	
+	background-color: #858585;
+	color: white;	
+	font-size: 40px;
+	padding: 10px 0 10px 15px;		
+}
+.right p{	
+	width: 100%;	
+	border-bottom: 1px solid gray;
+	clear: both;			
+}	
+.right  h5{
+	background-color: #D6D6D6;
+	text-align: center;
+	font-size: 15px;
+	font-weight: thin;
+	color: #555;
+	padding: 10px 0px;
+	width: 80px;	
+	display: inline-block;
+	margin-left: 0px;
+	padding: 20px 0;	
+}
+.right{		
+	line-height: 2em;
+}
+.right h6{
+	font-size: 16px;
+	/*font-family: arial;	*/
+	font-weight: bold;
+	margin-bottom: 0;
+	color: #555;
+	display: inline-block;	
+}
+.right span{
+	margin-left: 5px;	
+	font-weight: bold;	
+}
