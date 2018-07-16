@@ -1,0 +1,474 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family:Georgia,times,Verdana, Arial, Helvetica, sans-serif;	
+	box-sizing:border-box;	
+}
+button{
+	cursor: pointer;
+}
+a{
+	text-decoration: none;	
+}
+body{
+	width: 100%;/*1600px*/
+	height: 6274px;
+	margin: 0 auto;
+	text-align: center;
+}
+header{
+	height: 1000px;
+	background-image: url(images/Bg1.jpg);		
+	/*background-image: url(iamges/Background.png);
+	opacity:0.65;暂时实现不了2张图片，一张实现透明度调节？？？*/
+	color: #fff;	
+}
+header h2{
+	font-size: 62px;
+	line-height: 72px;
+	padding: 200px 0 86px;
+	
+}
+header p{
+	width: 766px;
+	height: 84px;		
+	font-size: 20px;		
+	display: inline-block;	
+	word-spacing: 2px;
+}
+header form{
+	border: 1px solid #fff;
+	display: inline-block;
+	width: 970px;
+	height: 250px;
+	padding: 60px 0;	
+}
+form #pwd{
+	margin-left: 30px;
+}
+form input{
+	width: 292px;
+	height: 50px;
+	padding: 20px;
+	font-size: 14px;
+	background-color:transparent;/*透明的按钮*/
+	border-color: white;
+	border-style: 200px;
+	border-radius: 3px;
+	margin-top: 43px;		
+}
+form input::input-placeholder{
+	color: #000;/*这个还是没有效果，应该考虑浏览器兼容性？？？*/
+}
+form button{
+	width: 125px;
+	height: 50px;		
+	background-color: #fff;		
+}
+/*每一个contents div的底部添加灰色边框.*/
+header .contents1,.contents2,.contents3,.contents4,.contents5,.contents6{
+	border-bottom: 1px solid gray;
+}
+
+/*contents1:Boatloads of Awesome*/
+.contents1{
+	height: 710px;	
+	color: black;
+	padding: 80px 0;
+}
+.contents1 h2{	
+	font-size: 42px;	
+	margin: 50px 0 80px;
+}
+.contents1 div{
+	width: 1040px;
+	height: 300px;
+	display: inline-block;
+	margin: 0 auto;
+	/*display: flex;	*/
+	/*弹性布局，先要实现自动在一行内实现2个DIV自动排列，父元素width=1000px,？？？*/		
+}
+.contents1 p:nth-child(even){
+	position: relative;
+	left: 138px;
+
+	/*1.使用伪类选择器选择[even=偶数]项p元素；参考元素是父元素div,所以会出现第2,4个p以父元素div为准向右偏移。
+	  2.第二次修改：修改父元素为position:relative;为参考元素，/然后修改p为相对定位，最终实现向右移动140px.
+	*/
+}
+.contents1 p:nth-child(1n+3){
+	margin-top: 55px;/*从第3个P元素开始，后面的每个元素开始上边距为55px*/
+}
+.contents1 img{
+	float: left;	
+}
+.contents1 .moblie,.Accessibility,.Fluid ,.Customization{
+	width: 450px;
+	height: 120px;	
+	/*background: #eee;*/
+	display: inline-block;
+	float: left;	
+	position: relative;
+}
+.contents1 div .title{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.contents1 div .description{
+	font-size: 16px;
+	color: #c0c0c0;/*灰色文字*/	
+}
+.contents1 div .title,.description{	
+	display: block;
+	text-align: left;	
+	margin-left: 60px;/*使description,title的文字始终在img的右侧，且与title左对齐,参考父元素.mobile*/
+}
+
+/*contents2:Supportive policies*/
+
+.contents2{
+	background-image: url(images/Bg2.jpg);	
+	height: 800px;
+	position: relative;
+}
+/*透明的背景图片，简写在一起，看不到效果，写在这里也看不到效果*/
+/*.contents2{
+	background-image:url(images/BackgroundBlack.jpg) repeat;
+	opacity: 0.9;
+}*/
+.contents2 .left{
+	width: 35%;
+	height: 604px;
+	margin:10% 0 0 10%;	
+	color: #fff;
+	text-align: left;	
+}
+.contents2 .left h3{
+	font-size: 42px;
+	line-height: 52px;
+	display: inline-block;
+	margin-top: 20%;
+}
+.contents2 .left p{
+	font-size: 18px;
+	line-height: 28px;
+	margin-top: 40px;
+}
+.contents2 .left a{
+	margin-top: 10%;
+	display: inline-block;
+	width: 240px;
+	height: 60px;
+	font-size: 12px;
+	word-spacing: 15px;
+	text-transform: uppercase;/*转换成大写字母*/	
+	border: 1px solid white;
+	text-align: center;
+	line-height: 60px;
+	border-radius: 3px;
+	margin-top: 15%;
+
+}
+.contents2 .left a:nth-child(odd){
+	color: #141414;
+	background-color: #fff;
+
+}
+.contents2 .left a:nth-child(even){
+	color:white;
+	background-color:transparent;
+	margin-top: 25px;
+}
+.contents2 .ipad{
+	height: 75%;
+	width: 50%;	
+	position: absolute;
+	right: -50px;
+	top: 12%;	
+	/*透明的边框，显示ipad*/	
+	border-left: 60px solid rgba(255,255,255,0.25);
+	border-top: 30px solid rgba(255,255,255,0.25);
+	border-bottom: 30px solid rgba(255,255,255,0.25);
+	border-radius: 25px;	
+}
+/*ipad的home键*/
+.contents2 span{
+	height:40px;/*与width设置一致*/
+	width:40px;
+	background:rgba(255,255,255,0.3);
+	border-radius:20px;/*四个圆角值都设置为宽度或高度值的一半*/
+	position: absolute;
+	top:45%;
+	left: -48px;
+}
+
+
+/*contents3:Try Our Awesome Products*/
+.contents3{
+	height: 580px;
+}
+.contents3 h3{
+	font-size: 42px;
+	margin:100px 0 70px;
+}
+.contents3 div{
+	width: 75%;
+	height: 55%;
+	display: inline-block;
+}
+.contents3 div p{
+	width: 30%;		
+	height: 100%;
+	display: inline-block;	
+}
+/*p>margin-left/right=82px;*/
+.contents3 div p span{
+	display: inline-block;
+	font-size: 16px;
+	color: #c0c0c0;
+	line-height: 2em;
+	margin-top: 6%;
+
+}
+.contents3 div p:nth-child(2){
+	margin: 0 2%;
+}
+/*contents4：大多说的宽高，都是采用百分比单位，我的屏幕较小，实际宽度是1600px*/
+
+.contents4{
+	height:16% ;/*H=1000/*/	
+	font-size: 16px;	
+}
+/*w=1004,h=792*/
+.contents4 div{
+	width: 75%;/*63%*/
+	height: 79%;
+	display: inline-block;	
+}
+.contents4 .pragraph{	
+	display: inline-block;		
+	height: 45%;
+	width: 44%;
+	text-align: left;
+	float: left;		
+	padding: 8% 5%;/*给段落中的文字一些空间，同时也和图片保持一定的距离，这个padding用的不错*/
+}
+.contents4 img:last-child,.contents4 .pra_2_mrgTop{
+	margin-top: 8%;
+}
+
+/*w=571,h=352*/
+.contents4 img{
+	width: 56%;	
+	height: 45%;
+	float: left;
+}
+.contents4 h3{
+	font-size: 20px;
+	margin-bottom: 3%;		
+}
+.contents4 .pragraph p{
+	color: #c0c0c0;
+	font-size: 16px;
+	line-height: 28px;
+}
+
+/* contents6:Contacts&email form*/
+.contents6{
+	height: 11%;
+	width: 100%;	
+}
+/*h=700,w=1200*/
+.contents6 .contacts{
+	width: 75%;
+	height: 100%;
+	display: inline-block;
+	margin: 0 auto;
+	
+}
+/*form>w=472,h=565;input>w=372,h=50,margin-top=30*/
+.contents6 .contacts form{
+	width: 40%;
+	height: 80%;
+	display: inline-block;
+	border:1px solid #c0c0c0;	
+	/*float: left;*/
+}
+.contents6 .contacts form input,textarea,button{
+	width: 80%;
+	height: 7%;
+	margin-top: 7%;
+	/*outline: none;*/
+	/*appearance: none;无效果*/
+}
+/*h=143*/
+.contents6 .contacts form textarea{
+	height: 20%;
+}
+.contents6 .contacts form button{
+	width: 80%;	
+	background-color: #141414;
+	color: white;	
+	letter-spacing: 2px;	
+}
+.contents6 .contacts form h5{
+	text-transform: uppercase;
+	font-family: Georgia;
+	font-size: 16px;
+	word-spacing: 0.5em;	
+	margin: 10% 0 4%;
+}
+.contents6 .contacts .contact_inf{
+	width: 40%;
+	height: 80%;	
+	display: inline-block;
+	float: right;
+	margin-right: 7%;
+	text-align: left;
+}
+.contents6 .contacts form,.contact_inf{
+	margin-top: 7%;
+}
+.contents6 .contacts .contact_inf h3{
+	font-family: Helvetica;	
+	font-size: 42px;
+	margin-top: 20%;
+}
+.contents6 .contacts .contact_inf p{	
+	color:#c0c0c0;
+	margin:5% 0;
+}
+.contents6 .contacts .contact_inf ul{		
+	padding: 5% 0;
+	line-height: 2em;
+	font-family: Helvetica;	
+}
+
+/*发现了一个问题，图片url()的地址不能有空格，否则看不到图片*/
+.contents6  ul li:nth-child(1){
+	list-style:inside url(images/Map.jpg);
+
+}
+.contents6  ul li:nth-child(2){
+	list-style:inside url(images/Phone.jpg);
+	margin-top: 3%;
+
+}
+.contents6  ul li:last-child{
+	list-style:inside url(images/Mail.jpg);
+	margin-top: 3%;
+}
+.contents6  ul li span{
+	font-size: 20px;
+	margin-right: 5%;	
+}
+.contents6  ul li{
+	line-height: 30px;
+}
+/*第2种方法实现列表图标
+.contents6 li{
+	background: url(images/Map.jpg) no-repeat left;
+	padding-left: 16px;
+}*/
+
+
+/*老师介绍h=1084*/
+.contents5{
+	width: 100%;
+	height: 1084px;
+	border-bottom:1px  solid #c0c0c0; 	
+}
+/*w=988,h=911*/
+.contents5 .teacher{
+	width: 75%;
+	height: 84%;
+	display: inline-block;
+	margin: 6% auto 0;
+	border:1px solid red;	
+}
+.contents5 .teacher h3{
+	font-size: 42px;
+	display: inline-block;
+	/*margin-top: 9%;算错了，参考元素是contents5*/
+}
+.contents5 .teacher p{
+	font-size: 18px;
+	color: #c0c0c0;
+	margin: 1em 0 2em;
+}
+.contents5 .teacher .dutton{
+	background: url(images/1.png) no-repeat;	
+	text-align: right;	
+	margin-right: 2%;
+}
+/*社交媒体图标链接，不过图片好像看不到啊*/
+.contents5 .teacher .dutton p a{
+	display:block;	
+	margin:3%;		
+	/*background-image: url(images/Facebook.jpg);图标用文字代替*/
+}
+.contents5 .teacher .dutton:hover{	
+	opacity: 0.65;
+	color:red;
+}
+/*w=473,h=342*/
+.contents5 .teacher .dutton,.teacher img{
+	width: 48%;
+	height: 38%;
+	display: inline-block;
+	float: left;	
+	margin-bottom: 4%;
+}
+.contents5 .teacher img:nth-child(odd){
+	margin-left: 2%;
+}
+.contents5 .dutton span{
+	display: inline-block;
+	margin-top: 3%;
+}
+.contents5 .dutton span:nth-child(1){
+	font-size: 20px;
+	margin-top: 15%;	
+}
+.contents5 .dutton span:nth-child(2){	
+	font-size: 12px;
+	color: gray;
+}
+
+/*h=410*/
+footer{	
+	height: 6.5%;
+	background: #141414;
+	color: #fff;
+	font-size: 16px;	
+}
+footer section{
+	width: 75%;
+	height: 100%;
+	display: inline-block;
+	margin:0 auto;
+}
+footer section ul{
+	list-style:none;
+	height: 60%;
+	width: 25%;
+	display: inline-block;
+	float: left;
+	margin-top: 7%;	
+	text-align: left;
+}
+footer section ul li{
+	padding-top: 10%;
+	color: #c0c0c0;
+}
+footer section .social p{
+	margin-top: 7%;
+	word-spacing: 0.7em;
+	color: #c0c0c0;
+}
+footer section .social li{
+	display: inline-block;
+	padding-right: 6%;
+	float: left;
+	margin-top: 4%;
+}
