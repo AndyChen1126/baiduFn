@@ -1,0 +1,538 @@
+/*
+说明：
+	1.最左侧一列要求自适应浏览器高度，左上面4个按钮相对浏览器左上角固定位置，
+	左下方两个按钮相对浏览器左下角固定位置。
+
+	2.左侧第二列(蓝色背景色)导航列固定宽度，高度也是自适应浏览器高度。
+	最下面的Monthly Goals部分的内容相对浏览器下边固定位置。
+
+	3.整个白色区域自适应宽度，右上方的人脸，名字部分相对浏览器右上角固定位置。
+
+	4.白色区域左侧列固定宽度，右侧列自适应宽度。
+
+要求：
+	代码风格符合某种编码规范
+	尽可能按照设计稿的尺寸进行实现
+	不需要考虑兼容IE浏览器
+
+images地址:
+	H:\gitHub\days12-15PsdToHtml\images\
+
+PSD:
+	W=1580;	H=1020;
+log:
+	1.在PS cc中用自动切图，切出的图片是空白的，想了半天，看到一篇文章，
+	说一般只有*.png 格式的软件才会有透明效果。
+
+	2.CSS中图片不能有空格哦，不然看不见图片。
+
+	3.background-position: center;//使图片居中，比设置x,y值要方便很多。
+
+	4.先易后难
+
+	5.为什么使用fixed后，无法设置 background-color:;？？？
+
+	6.background-repeat/-position/...没有继承性，注意使用。
+
+	7.还要多熟悉选择器的应用，尤其是伪类，伪元素。比如：区分：first-of-type,first-child
+
+	8.自以为了解某个规则，实际上还有很多的不知道，当出现问题的时候，要适当的查看文档靠谱:)
+
+	9.一定要先写HTML结构，然后再写CSS，否则最后“迷路”，更有目标感，或者对象感，参照物。
+
+	10.在心中要随时搞清楚元素是inline，还是block
+
+	11.nline元素没有margin-top和margin-bottom
+	inline元素的padding-top和padding-bottom不影响周围的元素
+	thead，tbody，tfoot，tr没有margin和padding，其实是因为display分别是table-header-group，table-footer-group，table-row-group，table-row
+	td没有margin，其实是因为display是table-cell
+*/
+
+*,body,html{
+	margin:0;
+	padding: 0;
+	box-sizing:border-box;
+	font-family: "microsoft yahei",Georgia,serif;
+	font-size: 14px;
+}
+ul{
+	list-style: none;
+}
+
+/*Active Highlight，在当前的菜单*/
+.ActiveLight{
+	background: url(images/Active_Highlight.png) no-repeat left center;	
+}
+.menu{
+	width: 350px;
+	background: #1d2531;
+	height: 100%;
+
+	border:1px solid red;
+} 
+.menu .primary{
+	/*background: #1d2531;*/
+	/*width: 6.3%;同样的效果和w=100px*/
+
+	width: 100px;
+	height: 100%;
+	margin-right: 30px;
+}
+.menu .primary ul{	
+	text-align: center;	
+	position: fixed;	
+}
+.menu .primary ul li{
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	margin: 20px;	
+	cursor: pointer;
+}
+.menu .primary ul li[class^="item"]{
+	background-repeat: no-repeat;
+	background-position: center;	
+}
+.menu .primary ul .item1{	
+	background: url(images/Item1.png)  #289df4;	
+}
+.menu .primary ul .item2{
+	background: url(images/Item2.png) #9581e3;
+}
+.menu .primary ul .item3{
+	background: url(images/Item3.png) #cf2c0f;
+}
+.menu .primary ul .item4{
+	background: url(images/Plus_Icon.png),url(images/Base.png);
+}
+/*左测一列：底部设置栏*/
+.menu .primary .set{
+	width: 56px;
+	height: 22px;
+	margin-top: 96%;
+	/*margin:0 26px 23px;*/	
+	position: fixed;
+	bottom: 26px;
+	left: 23px;
+}
+.menu .primary .set a{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	opacity: 0.5;
+}
+.menu .primary .set a:first-child{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 16px;
+	background: url(images/Grid.png) no-repeat center;
+}	
+.menu .primary .set a:last-child{
+	background: url(images/settings.png) no-repeat center;
+}	
+
+/*
+	2.左侧第二列列[固定宽度]，[高度]自适应浏览器高度。
+	最下面的Monthly Goals部分的内容相对浏览器下边固定位置。
+*/
+
+.menu .secondary{
+	width: 250px;
+	height: auto;
+	background-color: #222c3c;
+	padding: 20px;	
+	margin-left: 100px;
+}
+
+/*bottom 分隔条*/
+.menu .secondary .divider{
+	background: url(images/Divider.png) no-repeat center left;
+	height: 4px;
+	width: 100%;
+	margin-bottom: 25px;
+}
+.menu .secondary  h4{
+	display: inline-block;
+	font-size: 12px;
+	color: #5b6779;
+	text-transform: uppercase;/*把标题转换成大写英文字母*/	
+}
+.menu .secondary  h4 + a{
+	background: url(images/settings.png) no-repeat center right;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	float: right;
+
+}
+.menu .secondary ul li{
+	color: #b7c0cd;
+	margin: 26px 0;
+}
+.menu .secondary ul li a,.server a{
+	text-decoration:none; 
+	color:#b7c0cd; 
+}
+
+/*添加图标*/
+.secondary .products ul li{
+	padding-left: 30px;
+}
+
+/*background-repeat/-position/...没有继承性*/
+.secondary .products ul li:nth-child(1){
+	background: url(images/Book.png) no-repeat center left;
+}
+.secondary .products ul li:nth-child(2){
+	background: url(images/Video.png) no-repeat center left;
+}
+.secondary .products ul li:nth-child(3){
+	background: url(images/Painting.png) no-repeat center left;
+}
+.secondary .products ul li:nth-child(4){
+	background: url(images/Chart.png) no-repeat center left;
+}
+
+/*底部server状态栏*/
+.menu .secondary .server{
+	margin-top: 30%;
+	color: #fff;
+	padding-right: 20px;
+}
+.progress{
+	background: url(images/Fill.png) no-repeat left,url(images/Base_sever.png);
+	height: 4px;
+	margin-top: 10px;
+}
+
+
+/*
+1.右侧白色区域，宽度自适应，
+2.最左一列固定宽度，
+3.右上方的人脸，名字部分相对浏览器右上角固定位置
+*/
+
+/*top bar :profile; w=1230,h=80*/
+
+/*margin-left:30px;*/
+
+
+
+/*右侧白色区域:w=1280*/
+.chart{
+	width: 79%;
+	height: 100%;
+	font-size: 14px;/*这个大小的字体最多*/
+	margin-left: 21% ;/*c，350px*/
+	margin-top: -936px;
+	float: left;
+}
+/*top bar,profile*/
+.top{
+	width: 100%;
+	height: 80px;
+	margin-left: 81px;
+	border-bottom: 1px solid #b5b5b5;
+}
+.top h3{
+	display: inline-block;
+	float: left;
+	font-size: 24px;
+	font-family:  times;
+	font-weight: lighter;
+	color: #354052;
+	padding: 26px 0 0 26px;
+}
+
+.top .profile{	
+	width: 193px;
+	height: 58px;
+	display: inline-block;
+	margin-top: 11px;
+	float: right;
+	position: fixed;
+	top: 0;
+	right: 15px;
+	z-index: 1;
+
+	border:1px solid red;
+
+
+}
+.top .profile .photo{
+	display: inline-block;	
+	float: left;
+	width: 58px;
+	height: 58px;
+	border-radius: 29px;
+	background: url(images/Face.png) no-repeat ,url(images/Statusf.png) no-repeat 33px 33px;
+
+}
+
+/*区分：first-of-type,first-child*/
+
+/*
+:first-child 这个伪类，只有当元素是其父元素的第一个子元素时才能匹配。
+即只有当span是父元素的第一个子元素时该选择器才生效。
+
+我的意思这样写，更有效：
+.chart .top .profile span:first-of-type{} = .chart .top .profile span:nth-child(2){}
+*/
+
+.chart .top .profile span:nth-child(2){
+	color:#2399f1;
+	font-size: 16px;
+}
+.chart .top .profile span:nth-child(3){
+	color: #b5b5b5;
+	font-size: 14px;	
+}
+
+.chart .top .profile .drap{
+	display: inline-block;
+	width: 11px;
+	height: 7px;
+	background: url(images/dropdown.png) no-repeat center;
+	margin-bottom: 10px;
+	margin-left: 25px;
+
+}
+
+/*白色部分，左测，聊天好友栏*/
+.chart .left_contact{
+	width: 400px;
+	height: 100%;
+	border:1px solid red;
+	margin-left: 80px;
+}
+.chart .left_contact [type="search"]{
+	border-style: none;
+	border:1px solid #b5b5b5;
+	width: 310px;
+	height: 36px;
+	border-right: none;
+}
+.chart .left_contact form button{
+	width: 36px;
+	height: 36px;
+	border: 1px solid #b5b5b5;
+	background: url(images/Search.png) no-repeat center center;	
+	cursor: pointer;
+	position: relative;
+	top: 12px;
+	left: -10px;
+}	
+.chart .left_contact .devider2{
+	background: #e6e9ec;
+	height: 1px;
+	width: 400px;
+	margin-left:-16px;
+	margin-top: 21px;
+}
+.chart .left_contact{
+	border:1px solid #e6e9ecs;
+	color: #585d68;
+	padding: 15px;	
+}
+/*每一个好友的介绍*/
+.chart .left_contact  .user_info{
+	width: 100%;
+	height: 132px;
+	margin: 15px 0;
+	padding-top: 10px;
+	border-bottom: 1px solid #e6e9ec;
+	cursor: pointer;
+}
+.chart .left_contact  .user_info .avatar{
+	width: 180px;
+	height: 50px;	
+	padding-left: 65px;
+	float: left;
+}
+/*ID选择器似乎更加高效*/
+.chart .left_contact #Bessie{
+	background: url(images/Face_women.png) no-repeat center left;
+}
+.chart .left_contact #Victor{
+	background: url(images/victor.png) no-repeat center left;
+}
+.chart .left_contact #dustin{
+	background: url(images/dustin.png) no-repeat center left;
+}
+.chart .left_contact #jack{
+	background: url(images/jack.png) no-repeat center left;
+}
+.chart .left_contact #Stephen{
+	background: url(images/stphen.png) no-repeat center left;
+}
+.chart .left_contact #sally{
+	background: url(images/sally.png) no-repeat center left;
+}
+.chart .left_contact #robert{
+	background: url(images/robert.png) no-repeat center left;
+}
+
+/*所在公司 如twitters*/
+.chart .left_contact  span:nth-child(2){
+	color: #b5b5b5;		
+}
+
+/*头像右侧数字：last_login*/
+.chart .left_contact  .last_login{
+	color: #7f8fa4;
+	float: right;
+}
+/* last Email*/
+.chart .left_contact p{
+	clear: both;
+	padding-top: 10px;
+	color: #585d68;
+}
+
+
+/*右侧白色聊天框，宽度自适应*/
+.chart .right_chat{
+	width: 68%;
+	/*width: 53%;*/
+	height: 100%;	
+    /*margin-left: 480px;*/
+
+	border:1px solid blue;
+	overflow: auto;
+}
+
+/*右侧聊天栏，顶部状态栏*/
+
+.chart .right_chat .top{
+	display: inline-block;
+	width: 100%;
+	height: 72px;
+	border-bottom: 1px solid  #e6e9ec;	
+	margin-left: 0px;
+	padding: 25px;
+	float: right;
+}
+
+/*我的姓名和状态*/
+.chart .right_chat .top .name{
+	font-size: 18px;
+	color: #585d68;
+	width: 100%;
+	border:1px solid red;
+	display: inline-block;
+	width: 125px;
+	height: 25px;
+	float: left;
+	/*margin: 25px 0 0 25px;*/
+	background: url(images/Status.png) no-repeat center right;
+}
+.chart .right_chat .top .right .tools{
+	width: 300px;
+	height: 32px;
+	float: right;
+	background: #fafbfc;
+	border-radius: 5px;
+}
+.chart .right_chat .top .right .tools a{
+	display: inline-block;
+	float: left;
+	width: 36px;
+	height: 32px;
+}
+.chart .right_chat .top .right .tools a:nth-child(1){
+	background: url(images/User_icon.png) no-repeat center center;
+	border-right: 1px solid #ced0da;
+}
+.chart .right_chat .top .right .tools a:nth-child(2){
+	background: url(images/Upload_icon.png) no-repeat center center;
+	border-right: 1px solid #ced0da;
+}
+.chart .right_chat .top .right .tools a:nth-child(3){
+	background: url(images/Trash_icon.png) no-repeat center center;	
+	border-right: 1px solid #ced0da;
+}
+
+.chart .right_chat .top .right  .devi{
+	display: inline-block;
+	width: 2px;
+	height: 32px;
+	margin: 0 30px;
+	background: #ced0da;
+	float: left;
+}
+.chart .right_chat .top .right .no{
+	display: inline-block;
+	float: left;
+	margin-top: 5px;
+	margin-left: -8px;
+	color: #7f8fa4;
+}
+.chart .right_chat .top .right .tools a:nth-child(6){
+	display: inline-block;
+	background: url(images/Arrow_right.png) no-repeat center center;
+	margin-right: 0px;
+	float: right;
+	width: 36px;
+	height: 32px;
+	border:1px solid #ced0da;
+}
+.chart .right_chat .top .right .tools a:nth-child(7){
+	display: inline-block;
+	background: url(images/Arrow_left.png) no-repeat center center;
+	margin-right: 0px;
+	float: right;
+	width: 36px;
+	height: 32px;
+	border:1px solid #ced0da;
+}
+
+/*聊天详细信息*/
+.chart .right_chat .messages_past{
+	width: 830px;
+	width: 100%;
+	border:1px solid #829822;
+	padding: 30px;
+}
+
+/*信息分隔栏*/
+.chart .right_chat .messages_past .info_devi,.messages_past .info_devi2{
+	display: inline-block;
+	float: left;
+	/*width: 361px;*/
+	width: 100%;
+	height: 1px;
+
+}
+.chart .right_chat .messages_past .info_devi{
+	background: #e5e9ed;
+}
+.chart .right_chat .messages_past p{
+	width: 100%;
+	height: auto;	
+	border:1px solid blue;
+	margin-top: 40px;
+	padding-top: 20px;
+}
+.chart .right_chat .messages_past h3{
+	font-size: 16px;
+	color: #585d68;
+	display: inline-block;
+}
+.chart .right_chat .messages_past span{
+	display: inline-block;
+	color: #7f8fa4;
+	font-size:14px;
+	margin-left: 25px;
+
+}
+
+/*头像*/
+.chart .right_chat .messages_past .Bessie, .chart .right_chat .messages_past #Bessie{
+	background: url(images/Face_women.png) no-repeat top left;
+}
+.chart .right_chat .messages_past .jordan{
+	background: url(images/Face_jordan.png) no-repeat top left;
+}
+
